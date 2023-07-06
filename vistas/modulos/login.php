@@ -26,7 +26,7 @@
           </div>
         </div>
         <div class="input-group mb-3">
-            <div class="g-recaptcha" data-sitekey="6Lcel5QmAAAAAK0Kp9k_hCmfXqyy2E8DbZ66NZyI"></div>
+            <div class="g-recaptcha" data-sitekey="6LfF3pQmAAAAAC5MSUQ85a_p6VzUk63bWASJ4HgH"></div>
           </div>
         <div class="row">
           <div class="col-8">

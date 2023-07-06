@@ -5,7 +5,7 @@ class ControladorUsuario{
         if(isset($_POST['g-recaptcha-response'])){
             $ip = $_SERVER["REMOTE_ADDR"];
             $captcha = $_POST["g-recaptcha-response"];
-            $secretkey = "6Lcel5QmAAAAAKvaTdEU59PTXnbcPirW0XQ7e5a-";
+            $secretkey = "6LfF3pQmAAAAAFhLDHtaqpzc1PCBekr8sHFSImKb";
             $request = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=$secretkey&response=$captcha&remoteip=$ip");
             $atributos = json_decode($request, TRUE);
         if(isset($_POST['usuario']) && isset($_POST['password']) && $atributos["success"]){
