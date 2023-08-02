@@ -16,7 +16,7 @@ class ModeloCliente{
         else
             return "error";
     }
-    public static function mdlCargarCliente($tabla, $parametro, $id){
+    public static function mdlCargarClientes($tabla, $parametro, $id){
         if($parametro==null)
     {
         $stm = conexion::conectar()->prepare("SELECT * FROM $tabla");
@@ -29,8 +29,25 @@ class ModeloCliente{
         $stm->execute(); 
         $datos = $stm->fetch();
         return $datos;
+        }
     }
+        public static  function  mdlActualizarClientes($tabla, $data) {
+        $stm = conexion::conectar()->prepare("UPDATE $tabla SET cedula=:cedula,nombre=:nombre,apellidos=:apellidos,direccion=:direccion,telefono=:telefono,correo=:correo WHERE id_cliente=:id_clientes");
+        $stm->bindParam(':cedula', $data['cedula'], PDO::PARAM_STR);
+        $stm->bindParam(':nombre', $data['nombre'], PDO::PARAM_STR);
+        $stm->bindParam(':apellidos', $data['apellidos'], PDO::PARAM_STR);
+        $stm->bindParam(':direccion', $data['direccion'], PDO::PARAM_STR);
+        $stm->bindParam(':telefono', $data['telefono'], PDO::PARAM_STR);
+        $stm->bindParam(':correo', $data['email'], PDO::PARAM_STR);
+        $stm->bindParam(':id_cliente', $data['id_cliente'], PDO::PARAM_STR);
+
+        if($stm->execute()){
+            return "ok";
+        }else{
+            return "error";           
     
-}
+    }
 
 }
+}
+

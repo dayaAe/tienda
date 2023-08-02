@@ -51,7 +51,58 @@ class ControladorClientes{
     //FUNCION PARA CARGAR DATOS DEL CLIENTE
     public static function crtlCargarClientes($parametro, $id){
         $tabla = "cliente";
-        $datosClientes = ModeloCliente::mdlCargarCliente($tabla, $parametro, $id);
+        $datosClientes = ModeloCliente::mdlCargarClientes($tabla, $parametro, $id);
         return $datosClientes; 
+
+    }
+
+    //Funcion para actualixar datos
+    public static function crtlActualizarCliente(){
+        if (isset($_POST['modificar_cedula']) &&
+            isset($_POST['modificar_nombre']) &&
+            isset($_POST['modificar_apellido']) &&
+            isset($_POST['modificar_direccion']) &&
+            isset($_POST['modificar_telefono']) &&
+            isset($_POST['modificar_correo'])){
+                $tabla ="cliente";
+                $data = array('cedula' => $_POST['modificar_cedula'],
+                             'nombre' => $_POST['modificar_nombre'],
+                             'apellidos' => $_POST['modificar_apellido'],
+                             'direccion' => $_POST['modificar_direccion'],
+                             'telefono' => $_POST['modificar_telefono'],
+                             'email' => $_POST['modificar_correo'],
+                             'id_cliente' => $_POST['id']);
+                $res = ModeloCliente::mdlActualizarClientes($tabla, $data);
+                if($res == 'ok'){
+                    echo '<script>  
+                    Swal.fire({
+                        icon:"success",
+                        title: "¡Datos del cliente actualizados Correctamente...!",
+                        showConfirmButton: true,
+                        confirmButtonText: "Cerrar"
+                    }).then(function(result){
+                        if(result.value){
+                            window.location= "cliente";
+                        }
+                    })
+                  </script>';
+                } else{
+                    echo '<script>
+                    Swal.fire({
+                        icon:"error",
+                        title: "¡Datos de cliente no puden ser actualizados...!",
+                        showConfirmButton: true,
+                        confirmButtonText: "Cerrar"
+                    }).then(function(result){
+                        if(result.value){
+                            window.location= "cliente";
+                        }
+                    })
+                  </script>';
+                
+
+        }
+
+    }
     }
 }

@@ -52,7 +52,7 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="fas fa-user"></i></span>
                                         </div>
-                                        <input type="text" class="form-control" placeholder="Apelidos completos" name="apellido" id="apellido" required>
+                                        <input type="text" class="form-control" placeholder="Apellidos completos" name="apellidos" id="apellidos" required>
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="fas fa-user"></i></span>
                                         </div>
@@ -183,7 +183,7 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="fas fa-user"></i></span>
                                         </div>
-                                        <input type="text" class="form-control" placeholder="Editar Apelidos" name="modificar_apellido" id="modificar_apellido" required>
+                                        <input type="text" class="form-control" placeholder="Editar Apellidos" name="modificar_apellidos" id="modificar_apellidos" required>
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="fas fa-user"></i></span>
                                         </div>
@@ -209,7 +209,7 @@
                                     <button type="submit" class="btn btn-primary">Actualizar Datos</button>
                                     <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
                                     <?php
-                                    #Codigo PHP para cargar datos al modal
+                                    $objUsuario->crtlActualizarCliente(); 
                                     ?>
                                 </div>
                             </div>
