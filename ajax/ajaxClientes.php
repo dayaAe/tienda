@@ -11,6 +11,13 @@ class ajaxClientes{
         $datos = ControladorClientes::crtlCargarClientes( $parametro, $id);
         echo json_encode($datos);
     }
+    public function elimnarDatos(){
+        #code
+        $parametro="cliente";
+        $id = $this->idClientes;
+        $datos = ControladorClientes::ctrlEliminarClientes($id);
+        echo json_encode($datos);
+    }
 }
 
 if(isset($_POST['idClientes'])){

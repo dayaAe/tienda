@@ -59,20 +59,24 @@ class ControladorClientes{
     //Funcion para actualixar datos
     public static function crtlActualizarCliente(){
         if (isset($_POST['modificar_cedula']) &&
-            isset($_POST['modificar_nombre']) &&
-            isset($_POST['modificar_apellido']) &&
-            isset($_POST['modificar_direccion']) &&
-            isset($_POST['modificar_telefono']) &&
-            isset($_POST['modificar_correo'])){
-                $tabla ="cliente";
-                $data = array('cedula' => $_POST['modificar_cedula'],
-                             'nombre' => $_POST['modificar_nombre'],
-                             'apellidos' => $_POST['modificar_apellido'],
-                             'direccion' => $_POST['modificar_direccion'],
-                             'telefono' => $_POST['modificar_telefono'],
-                             'email' => $_POST['modificar_correo'],
-                             'id_cliente' => $_POST['id']);
+        isset($_POST['modificar_nombre']) &&
+        isset($_POST['modificar_apellidos']) &&
+        isset($_POST['modificar_direccion']) &&
+        isset($_POST['modificar_telefono']) &&
+        isset($_POST['modificar_correo'])){
+            $tabla ="cliente";
+            $data = array('cedula' => $_POST['modificar_cedula'],
+            'nombre' => $_POST['modificar_nombre'],
+            'apellidos' => $_POST['modificar_apellidos'],
+            'direccion' => $_POST['modificar_direccion'],
+            'telefono' => $_POST['modificar_telefono'],
+            'email' => $_POST['modificar_correo'],
+            'id_cliente' => $_POST['id_cliente']);
+            
+            
+            
                 $res = ModeloCliente::mdlActualizarClientes($tabla, $data);
+
                 if($res == 'ok'){
                     echo '<script>  
                     Swal.fire({
@@ -105,4 +109,12 @@ class ControladorClientes{
 
     }
     }
-}
+    public static function ctrlEliminarClientes($id) {
+    
+        $tabla = "cliente"; 
+        $datosCliente = ModeloCliente::mdlEliminarCliente($tabla, $id);
+        return $datosCliente;
+       }
+    }
+    
+    

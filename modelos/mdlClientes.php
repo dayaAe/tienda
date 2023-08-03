@@ -32,22 +32,28 @@ class ModeloCliente{
         }
     }
         public static  function  mdlActualizarClientes($tabla, $data) {
-        $stm = conexion::conectar()->prepare("UPDATE $tabla SET cedula=:cedula,nombre=:nombre,apellidos=:apellidos,direccion=:direccion,telefono=:telefono,correo=:correo WHERE id_cliente=:id_clientes");
+        $stm = conexion::conectar()->prepare("UPDATE $tabla SET cedula=:cedula,nombre=:nombre,apellidos=:apellidos,direccion=:direccion,telefono=:telefono, email=:email WHERE id_cliente=:id_cliente");
         $stm->bindParam(':cedula', $data['cedula'], PDO::PARAM_STR);
         $stm->bindParam(':nombre', $data['nombre'], PDO::PARAM_STR);
         $stm->bindParam(':apellidos', $data['apellidos'], PDO::PARAM_STR);
         $stm->bindParam(':direccion', $data['direccion'], PDO::PARAM_STR);
         $stm->bindParam(':telefono', $data['telefono'], PDO::PARAM_STR);
-        $stm->bindParam(':correo', $data['email'], PDO::PARAM_STR);
-        $stm->bindParam(':id_cliente', $data['id_cliente'], PDO::PARAM_STR);
+        $stm->bindParam(':email', $data['email'], PDO::PARAM_STR);
+        $stm->bindParam(':id_cliente', $data['id_cliente'], PDO::PARAM_INT);
 
-        if($stm->execute()){
+        if($stm->execute())
             return "ok";
-        }else{
+        else
             return "error";           
-    
+    } 
+    public static function mdlEliminarCliente($tabla, $id){
+        $stm = conexion::conectar()->prepare("DELETE $tabla WHERE id_cliente = :id_cliente");
+        $stm->bindParam(':id_cliente', $id, PDO::PARAM_INT);
+        if($stm->execute())
+            return "1";
+        else
+            return "0";
     }
+}
 
-}
-}
 

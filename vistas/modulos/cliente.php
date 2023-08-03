@@ -127,7 +127,7 @@
                     <td>
                     <div class='btn btn-group'>
                     <button class='btn btn-warning btnCargarDatos'idClientes='".$valor["id_cliente"]."' data-toggle='modal' data-target='#Modaledit'><i class='fas fa-edit'></i></button>
-                    <button class='btn btn-danger'><i class='fas fa-user-times'></i></button>
+                    <button class='btn btn-danger btnEliminarDatos' idClientes='".$valor["id_cliente"]."'><i class='fas fa-user-times'></i></button>
                     </div>
                     </td>
                   </tr>";
@@ -198,6 +198,7 @@
                                             <span class="input-group-text"><i class="fas fa-phone"></i></span>
                                         </div>
                                     </div>
+                                    <input type="hidden" name="id_cliente" id="id_cliente" >
                                     <div class="input-group mb-3">
                                         <input type="email" class="form-control" placeholder="Editar Email" name="modificar_correo" id="modificar_correo" required>
                                         <div class="input-group-prepend">
